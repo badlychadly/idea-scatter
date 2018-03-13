@@ -1,0 +1,15 @@
+<h2>New Idea</h2>
+
+
+<form class="" action="/ideas" method="post">
+
+  <h4>Categories</h4>
+  <%Category.all.each do |category|%>
+    <input type="checkbox" name="category_ids[]" value="<%=category.id%>" id="<%=category.name%>"><%=category.name%></input>
+    <br>
+  <% end %>
+  <br>
+
+  <input type="submit" value="submit">
+
+</form>
