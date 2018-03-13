@@ -14,12 +14,11 @@ class IdeasController < ApplicationController
     end
   end
 
-  post '/ideas' do
-    binding.pry
-    params[:category_ids].map do |id|
-      Category.find_by(id: id).items
-    end
-  end
+  # post '/ideas' do
+  #   params[:category_ids].map do |id|
+  #     Category.find_by(id: id).items
+  #   end
+  # end
 
 
 end

@@ -1,0 +1,25 @@
+
+<h2>Choose your desired categories</h2>
+
+<form class="" action="/categories" method="post">
+
+  <h4>If you want to add a new Category <a href="/categories/new">click here</a></h4>
+  <%Category.all.each do |category|%>
+    <input type="checkbox" name="categories[category_ids][]" value="<%=category.id%>" id="<%=category.name%>"><%=category.name%></input>
+    <br>
+  <% end %>
+  <br>
+
+  <input type="text" name="categories[new][]" id="categories" placeholder="New Category">
+  <br><br>
+
+    <h4>Click on related Items</h4>
+
+    <%Item.all.each do |item|%>
+      <input type="checkbox" name="item[names][]" value="<%=item.name%>" id="<%=item.name%>"><%=item.name%></input>
+    <% end %>
+    <br>
+
+  <input type="submit" value="submit">
+
+</form>
