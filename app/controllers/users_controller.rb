@@ -35,5 +35,9 @@ class UsersController < ApplicationController
     redirect '/'
   end
 
+  get '/users/categories' do
+    erb :'/users/categories'
+  end
+
 
 end
