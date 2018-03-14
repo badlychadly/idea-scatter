@@ -35,20 +35,6 @@ class CategoriesController < ApplicationController
       end
       current_user.items = @items
     end
-
-    #   current_user.categories.each do |cat|
-    #     cat.ideas.each do |idea|
-    #       cat.category_ideas.each do |ci|
-    #         binding.pry
-    #     end
-    #   end
-    # end
-
-
-    # current_user.categories.each do |category|
-    #   category.items = @items
-    # end
-    # binding.pry
   end
 
 
