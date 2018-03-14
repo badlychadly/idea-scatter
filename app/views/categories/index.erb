@@ -5,18 +5,18 @@
 
   <h4>If you want to add a new Category <a href="/categories/new">click here</a></h4>
   <%Category.all.each do |category|%>
-    <input type="checkbox" name="categories[category_ids][]" value="<%=category.id%>" id="<%=category.name%>"><%=category.name%></input>
+    <input type="checkbox" name="categories[]" value="<%=category.name%>" id="<%=category.name%>"><%=category.name%></input>
     <br>
   <% end %>
   <br>
 
-  <input type="text" name="categories[new][]" id="categories" placeholder="New Category">
+  <input type="text" name="categories[]" id="categories" placeholder="New Category">
   <br><br>
 
     <h4>Click on related Items</h4>
 
     <%Item.all.each do |item|%>
-      <input type="checkbox" name="item[names][]" value="<%=item.name%>" id="<%=item.name%>"><%=item.name%></input>
+      <input type="checkbox" name="items[]" value="<%=item.name%>" id="<%=item.name%>"><%=item.name%></input>
     <% end %>
     <br>
 

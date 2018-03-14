@@ -4,6 +4,7 @@ class CreateCategoryIdeas < ActiveRecord::Migration[5.1]
       t.integer :category_id
       t.integer :idea_id
       t.integer :item_id
+      t.integer :user_id
     end
   end
 end

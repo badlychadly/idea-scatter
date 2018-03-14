@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180312210337) do
     t.integer "category_id"
     t.integer "idea_id"
     t.integer "item_id"
+    t.integer "user_id"
   end
 
   create_table "ideas", force: :cascade do |t|
