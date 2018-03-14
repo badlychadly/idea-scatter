@@ -19,30 +19,36 @@ class CategoriesController < ApplicationController
            @categories << category
          end
       end
-      binding.pry
-        current_user.category_ideas = category
+        current_user.categories = @categories
 
     else
       redirect '/categories'
     end
-    # if !params[:categories][:category_ids].empty?
-    #   @categories = params[:categories][:category_ids].map do |category|
-    #   Category.find_by(id: category)
-    #   end
-    # end
-    # if !params[:categories][:new].first.empty?
-    #   params[:categories][:new].each do |category|
-    #     @categories << Category.create(name: category)
-    #   end
-    # end
-    # if !params[:item][:names].empty?
-    #   params[:item][:names].each do |name|
-    #     obj = Item.find_by(name: name)
-    #     @categories.each do |category|
-    #       category.category_ideas.create(item: obj)
+    @items = []
+    if !params[:items].all?{|i| i.empty?}
+      params[:items].map do |name|
+        item = Item.find_or_create_by(name: name)
+        if item.save
+          @items << item
+        # current_user.category_ideas.create(item: item)
+        end
+      end
+      current_user.items = @items
+    end
+
+    #   current_user.categories.each do |cat|
+    #     cat.ideas.each do |idea|
+    #       cat.category_ideas.each do |ci|
+    #         binding.pry
     #     end
     #   end
     # end
+
+
+    # current_user.categories.each do |category|
+    #   category.items = @items
+    # end
+    # binding.pry
   end
 
 
