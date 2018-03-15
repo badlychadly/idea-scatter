@@ -1,1 +1,11 @@
-<h2>New Idea</h2>
+<h3>These are your Categories/Items</h3>
+
+<h5>Current Categories:</h5>
+<%current_user.categories.each do |category|%>
+  <%=category.name%>
+<% end %>
+
+<h5>Related Items</h5>
+<%current_user.items.map do |item|%>
+  <%=item.name%>
+<% end.shuffle %>

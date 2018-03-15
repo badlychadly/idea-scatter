@@ -3,7 +3,7 @@
 
 <form class="" action="/categories" method="post">
 
-  
+
   <%Category.all.each do |category|%>
     <input type="checkbox" name="categories[]" value="<%=category.name%>" id="<%=category.name%>"><%=category.name%></input>
     <br>
@@ -19,12 +19,12 @@
     <%Item.all.each do |item|%>
       <input type="checkbox" name="items[]" value="<%=item.name%>" id="<%=item.name%>"><%=item.name%></input>
     <% end %>
-    <br>
+    <br><br>
     <label for="">Or add a new Item</label>
     <br>
     <input type="text" name="items[]" placeholder="New Item">
     <br><br>
-    
+
   <input type="submit" value="submit">
 
 </form>
