@@ -1,11 +1,19 @@
-<h3>These are your Categories/Items</h3>
 
-<h5>Current Categories:</h5>
-<%current_user.categories.each do |category|%>
-  <%=category.name%>
-<% end %>
+<h3>New Idea</h3>
 
-<h5>Related Items</h5>
-<%current_user.items.map do |item|%>
-  <%=item.name%>
-<% end.shuffle %>
+
+
+<form class="" action="/ideas" method="post">
+  <input type="text" name="idea" id="idea" placeholder="Idea">
+  <br><br>
+  <h4>Choose a Category for your Idea</h4>
+  <%Category.all.each do |category|%>
+    <input type="checkbox" name="category[name]" value="<%=category.name%>" id="<%=category.name%>"><%=category.name%></input>
+    <br>
+  <% end %>
+  <label for="">Or create a new one</label>
+  <br>
+  <input type="text" name="category[new]" id="category" placeholder="New Category">
+  <br><br>
+  <input type="submit" value="submit">
+</form>

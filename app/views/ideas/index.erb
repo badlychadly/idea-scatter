@@ -2,10 +2,10 @@
 
 
 <%Idea.all.each do |idea|%>
-  <%=idea.content%>
+  <a href="/ideas/<%=idea.id%>"><%=idea.content%></a>
   <br>
 <% end %>
 <br><br>
 
-
+<a href="/ideas/new">New Idea</a>
 <a href="/logout">logout</a>
