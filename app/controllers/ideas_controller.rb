@@ -15,17 +15,23 @@ class IdeasController < ApplicationController
   end
 
   post '/ideas' do
-    if !params[:idea].empty? && params[:category].size == 1
-      binding.pry
-      category = Category.find_or_create_by(name: params[:category][:name])
+    if !params[:idea].empty?
+      category = Category.create(name: params[:category][:new]) unless params[:category][:new].empty?
+
+      category = Category.find_or_create_by(name: params[:category][:name]) if params[:category][:new].empty?
       if category.save
-        current_user.ideas.find_or_create_by(content: params[:idea], category: category)
+        current_user.ideas.create(content: params[:idea], category: category)
         redirect '/ideas'
       end
     else
       # flash[:message] = "Must fill out all fields"
       redirect '/ideas/new'
     end
+  end
+
+  get '/ideas/:id' do
+    @idea = Idea.find_by(id: params[:id])
+    erb :'ideas/show'
   end
 
 

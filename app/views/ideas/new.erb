@@ -6,7 +6,7 @@
 <form class="" action="/ideas" method="post">
   <input type="text" name="idea" id="idea" placeholder="Idea">
   <br><br>
-  <h4>Choose a Category for your Idea</h4>
+  <h4>Choose 1 Category for your Idea</h4>
   <%Category.all.each do |category|%>
     <input type="checkbox" name="category[name]" value="<%=category.name%>" id="<%=category.name%>"><%=category.name%></input>
     <br>
