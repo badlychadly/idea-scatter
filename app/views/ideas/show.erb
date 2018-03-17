@@ -1,8 +1,9 @@
 
+<h4><%=@idea.content%> - <%=@idea.user.username%></h4>
+<a href="/users/<%=@idea.user.slug"></a>
 
-<%=@idea.content%>
 <br><br>
 
 <h5>Category</h5>
 
-<a href="/categories/<%=@idea.category.id%>"><%=@idea.category%></a>
+<a href="/categories/<%=@idea.category.id%>"><%=@idea.category.name%></a>

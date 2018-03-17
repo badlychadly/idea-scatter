@@ -1,1 +1,9 @@
 <h4><%=@category.name%></h4>
+
+
+<h5>Ideas associated to this Category</h5>
+
+<%@category.ideas.each do |idea|%>
+  <a href="/ideas/<%=idea.id%>"><%=idea.content%> - <%=idea.user.username%></a>
+  <br>
+<% end %>
