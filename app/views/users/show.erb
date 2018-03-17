@@ -1,0 +1,13 @@
+<h4><%=@user.username%>'s Info</h4>
+
+
+<%@user.ideas.each do |idea|%>
+  <a href="/ideas/<%=idea.id%>"><%=idea.content%></a>
+  <br>
+<% end %>
+<br>
+
+<%@user.categories.each do |category|%>
+  <a href="/categories/<%=category.id%>"><%=category.name%></a>
+  <br>
+<% end %>
