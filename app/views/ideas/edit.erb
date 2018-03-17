@@ -1,0 +1,22 @@
+<h3>Edit Idea</h3>
+
+
+<form class="" action="/ideas" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+
+
+  <input type="text" name="idea" id="idea" placeholder="Idea" value="<%=@idea.content%>">
+  <br><br>
+
+  <h4>Choose different Category</h4>
+  <%Category.all.each do |category|%>
+    <input type="checkbox" name="category[name]" value="<%=category.name%>" id="<%=category.name%>"<%='checked' if @idea.category == category %>><%=category.name%></input>
+    <br>
+  <% end %>
+
+  <label for="">Or create a new one</label>
+  <br>
+  <input type="text" name="category[new]" id="category" placeholder="New Category">
+  <br><br>
+  <input type="submit" value="submit">
+</form>

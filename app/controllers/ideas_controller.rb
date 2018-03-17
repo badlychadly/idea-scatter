@@ -34,5 +34,18 @@ class IdeasController < ApplicationController
     erb :'ideas/show'
   end
 
+  get '/ideas/edit/:id' do
+    if logged_in?
+      @idea = Idea.find_by(id: params[:id])
+      if !!@idea && @idea.user == current_user
+      erb :'ideas/edit'
+    else
+      redirect "/ideas/#{@idea.id}"
+    end
+    else
+      redirect '/login'
+    end
+  end
+
 
 end
