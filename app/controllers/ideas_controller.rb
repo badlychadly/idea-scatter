@@ -15,7 +15,13 @@ class IdeasController < ApplicationController
   end
 
   post '/ideas' do
-    if !params[:idea].empty?
+    if params[:idea].empty? || params[:category].all? do |k, v|
+      binding.pry
+        v.empty?
+      end
+      # flash[:message] = "Must fill out all fields"
+      redirect '/ideas/new'
+    else
       category = Category.create(name: params[:category][:new]) unless params[:category][:new].empty?
 
       category = Category.find_or_create_by(name: params[:category][:name]) if params[:category][:new].empty?
@@ -23,9 +29,6 @@ class IdeasController < ApplicationController
         current_user.ideas.create(content: params[:idea], category: category)
         redirect '/ideas'
       end
-    else
-      # flash[:message] = "Must fill out all fields"
-      redirect '/ideas/new'
     end
   end
 
@@ -56,6 +59,17 @@ class IdeasController < ApplicationController
     end
     @idea.update(content: params[:content], category: category)
     redirect "/ideas/#{@idea.id}"
+  end
+
+  delete '/ideas/:id/delete' do
+    @idea = Idea.find_by(id: params[:id])
+    if logged_in? && @idea.user == current_user
+      @idea.destroy
+      redirect "/users/#{current_user.slug}"
+    else
+      # flash[:message] = "Can Only Delete your own Ideas"
+      redirect "/ideas/#{@idea.id}"
+    end
   end
 
 
