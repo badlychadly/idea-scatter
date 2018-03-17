@@ -64,7 +64,7 @@ class IdeasController < ApplicationController
   delete '/ideas/:id/delete' do
     @idea = Idea.find_by(id: params[:id])
     if logged_in? && @idea.user == current_user
-      @idea.destroy
+      @idea.delete
       redirect "/users/#{current_user.slug}"
     else
       # flash[:message] = "Can Only Delete your own Ideas"

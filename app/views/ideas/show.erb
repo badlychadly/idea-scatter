@@ -12,7 +12,7 @@
 <a href="/ideas/<%=@idea.id%>/edit">Edit Idea</a>
 <br>
 
-<form class="" action="ideas/<%=@idea.id%>/delete" method="post">
+<form action="/ideas/<%=@idea.id%>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
 
   <input type="submit" value="Delete Idea">
