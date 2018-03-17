@@ -37,7 +37,7 @@ class IdeasController < ApplicationController
     erb :'ideas/show'
   end
 
-  get '/ideas/edit/:id' do
+  get '/ideas/:id/edit' do
     if logged_in?
       @idea = Idea.find_by(id: params[:id])
       if !!@idea && @idea.user == current_user
