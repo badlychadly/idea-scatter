@@ -47,5 +47,16 @@ class IdeasController < ApplicationController
     end
   end
 
+  patch '/ideas/:id' do
+    @idea = Idea.find_by(id: params[:id])
+    if params[:category][:new].empty?
+      category = Category.find_by(id: params[:category][:id])
+    else
+      category = Category.find_or_create_by(name: params[:category][:new])
+    end
+    @idea.update(content: params[:content], category: category)
+    redirect "/ideas/#{@idea.id}"
+  end
+
 
 end
