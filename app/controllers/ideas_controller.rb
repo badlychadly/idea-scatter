@@ -1,5 +1,8 @@
+require 'rack-flash'
+
 class IdeasController < ApplicationController
 
+use Rack::Flash
 
 
   get '/ideas' do
@@ -16,7 +19,6 @@ class IdeasController < ApplicationController
 
   post '/ideas' do
     if params[:idea].empty? || params[:category].all? do |k, v|
-      binding.pry
         v.empty?
       end
       # flash[:message] = "Must fill out all fields"
@@ -41,10 +43,11 @@ class IdeasController < ApplicationController
     if logged_in?
       @idea = Idea.find_by(id: params[:id])
       if !!@idea && @idea.user == current_user
-      erb :'ideas/edit'
-    else
-      redirect "/ideas/#{@idea.id}"
-    end
+        erb :'ideas/edit'
+      else
+        flash[:notice] = "Can Only edit your own Ideas"
+        redirect "/ideas/#{@idea.id}"
+      end
     else
       redirect '/login'
     end
@@ -67,7 +70,7 @@ class IdeasController < ApplicationController
       @idea.delete
       redirect "/users/#{current_user.slug}"
     else
-      # flash[:message] = "Can Only Delete your own Ideas"
+      flash[:notice] = "Can Only Delete your own Ideas"
       redirect "/ideas/#{@idea.id}"
     end
   end

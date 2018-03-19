@@ -1,3 +1,11 @@
+<style media="screen">
+  .flash {
+    color: red;
+  }
+</style>
+
+
+
 
 <h4><%=@idea.content%> - <a href="/users/<%=@idea.user.slug%>"><%=@idea.user.username%></a></h4>
 
@@ -9,9 +17,16 @@
 <a href="/categories/<%=@idea.category.id%>"><%=@idea.category.name%></a>
 <br>
 
-<a href="/ideas/<%=@idea.id%>/edit">Edit Idea</a>
-<br>
 
+<a href="/ideas/<%=@idea.id%>/edit">Edit Idea</a>
+
+<br>
+<div class="flash">
+<%if flash[:notice]%>
+  <%=flash[:notice]%>
+  <% end %>
+</div>
+<br>
 <form action="/ideas/<%=@idea.id%>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
 
