@@ -1,15 +1,16 @@
 <h2>Ideas</h2>
-
+<br>
 
 <%Idea.all.each do |idea|%>
-  <div class="list-group col-sm-6 mb-1">
-  <a href="/users/<%=idea.user.username%>" class="list-group-item list-group-item-action active">
-    <%=idea.user.username%>
-  </a>
-  <a href="/ideas/<%=idea.id%>" class="list-group-item list-group-item-action"><%=idea.content%>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
-  </a>
+
+<div class="card col-sm-6 mb-2">
+  <div class="card-body">
+    <h5 class="card-title"><a href="/users/<%=idea.user.username%>" class="card-link"><%=idea.user.username%></a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Idea:</h6>
+    <a href="/ideas/<%=idea.id%>" class="list-group-item list-group-item-action bg-white text-primary"><p class="card-header bg-light"><%=idea.content%></p></a>
+    <p class="card-link">Category: <a href="/categories/<%=idea.category.id%>" class="card-link"><%=idea.category.name%></a></p>
+  </div>
 </div>
+
 <% end %>
 <br><br>
