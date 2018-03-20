@@ -2,10 +2,14 @@
 
 
 <%Idea.all.each do |idea|%>
-  <a href="/ideas/<%=idea.id%>"><%=idea.content%> - </a><a href="/users/<%=idea.user.username%>"><%=idea.user.username%></a>
-  <br>
+  <div class="list-group col-sm-6 mb-1">
+  <a href="/users/<%=idea.user.username%>" class="list-group-item list-group-item-action active">
+    <%=idea.user.username%>
+  </a>
+  <a href="/ideas/<%=idea.id%>" class="list-group-item list-group-item-action"><%=idea.content%>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action disabled">Morbi leo risus
+  </a>
+</div>
 <% end %>
 <br><br>
-
-<a href="/ideas/new">New Idea</a>
-<a href="/logout">logout</a>
