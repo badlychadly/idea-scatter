@@ -1,7 +1,7 @@
 <h2>Signup</h2>
 
 
-<form class="" action="/signup" method="post">
+<!-- <form class="" action="/signup" method="post">
   <input type="text" name="username" id="username" placeholder="Username">
   <br><br>
   <input type="text" name="email" id="email" placeholder="Email">
@@ -10,28 +10,31 @@
   <br><br>
 
   <input type="submit" value="signup">
-</form>
+</form> -->
 
 
-<form action="index.html" method="post">
+<form action="/signup" method="post">
   <div class="form-group">
     <div class="col-md-4 mb-3">
-      <label for="validationServerUsername">Username</label>
+      <label for="validationServer01">Username</label>
+      <input type="text" name="username" class="form-control" id="validationServer01" placeholder="Username" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServerUsername">Email</label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+          <span class="input-group-text text-white bg-primary" id="inputGroupPrepend3">@</span>
         </div>
-        <input type="text" class="form-control" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+        <input type="text" name="email" class="form-control" id="validationServerUsername" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationServer01">First name</label>
-      <input type="text" class="form-control" id="validationServer01" placeholder="First name" value="Mark" required>
+      <label for="validationServer02">Password</label>
+      <input type="password" name="password" class="form-control" id="validationServer02" placeholder="Password" required>
     </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationServer02">Last name</label>
-      <input type="text" class="form-control" id="validationServer02" placeholder="Last name" value="Otto" required>
-    </div>
-
   </div>
+  <div class="col-md-4">
+    <input type="submit" class="btn btn-primary" value="Signup">
+  </div>
+
 </form>

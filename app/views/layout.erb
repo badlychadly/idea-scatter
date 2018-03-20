@@ -24,16 +24,16 @@
         <%if logged_in?%>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/ideas">Ideas <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="/categories">Categories</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="/ideas/new">Add Idea</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="/categories/new">Add Category</a>
             </li>
           </ul>
         <% end %>
@@ -45,8 +45,19 @@
             <li class="nav-item">
               <a class="nav-link" href="/signup">Signup</a>
             </li>
-
+          <% else %>
+          <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
+           <div class="dropdown-menu">
+             <a class="dropdown-item" href="/users/<%=current_user.slug%>">My Ideas</a>
+             <!-- <a class="dropdown-item" href="#">Another action</a>
+             <a class="dropdown-item" href="#">Something else here</a> -->
+             <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="/logout">Logout</a>
+           </div>
+          </li>
           <% end %>
+
           </ul>
         <!-- <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">

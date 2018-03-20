@@ -44,5 +44,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  delete '/categories/:id/delete' do
+    @category = Category.find_by(id: params[:id])
+    if logged_in? && @category.users.include?(current_user)
+      current_user.categories.delete(@category)
+    else
+      # flash[:notice]
+    end
+    redirect "/categories/#{@category.id}"
+  end
+
 
 end
