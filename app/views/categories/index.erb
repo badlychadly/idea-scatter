@@ -1,5 +1,5 @@
-<h4>All Categories</h4>
-
+<h3 class="card-header text-center bg-light">All Categories</h3>
+<br><br>
 
 
 
@@ -22,7 +22,7 @@
         </div>  
       </li>
       <%Category.all.each do |category|%>
-      <a href="#" class="list-group-item list-group-item-action active bg-light text-primary border">
+      <a href="/categories/<%=category.id%>" class="list-group-item list-group-item-action active bg-light text-primary border">
         <div class="row align-items-center">
           <div class="col">
             <%=category.name%>

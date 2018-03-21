@@ -17,8 +17,15 @@ class CategoriesController < ApplicationController
   end
 
   post '/categories' do
-    Category.find_or_create_by(params)
-    redirect '/categories'
+    if !Category.find_by(params)
+      category = Category.create(params)
+      if category.save
+        redirect '/categories'
+      end
+    else
+      # flash[:notice] = ""
+      redirect '/categories/new'
+    end
   end
 
 
