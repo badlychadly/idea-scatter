@@ -2,10 +2,40 @@
 
 
 
-<%Category.all.each do |category|%>
-  <a href="/categories/<%=category.id%>"><%=category.name%></a>
-  <br>
-<% end %>
-<br>
 
-<a href="/categories/new">Add Category</a>
+
+
+  <div class="container col-sm-6">
+    <div class="list-group ">
+      <li class="list-group-item bg-light text-primary">
+
+        <div class="row align-items-center mb-2">
+          <div class="col">
+            Category
+          </div>
+          <div class="col">
+            Num of Ideas
+          </div>
+          <div class="col">
+            Num of Users
+          </div>
+        </div>  
+      </li>
+      <%Category.all.each do |category|%>
+      <a href="#" class="list-group-item list-group-item-action active bg-light text-primary border">
+        <div class="row align-items-center">
+          <div class="col">
+            <%=category.name%>
+          </div>
+          <div class="col">
+            <%=category.ideas.size%>
+          </div>
+          <div class="col">
+            <%=category.users.size%>
+          </div>
+        </div>
+      </a>
+      <% end %>
+    </div>
+  </div>
+
