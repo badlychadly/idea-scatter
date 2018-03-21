@@ -1,18 +1,44 @@
-<h4><%=@category.name%></h4>
+<h3 class="card-header text-center bg-light">Ideas associated with <%=@category.name%></h3>
+<br><br>
 
-
-<h5>Ideas associated to this Category</h5>
+<%if flash[:notice]%>
+  <div class="alert alert-danger mb-0 text-center" role="alert">
+    <strong><%=flash[:notice]%></strong>
+  </div>
+<% end %>
 
 <%@category.ideas.each do |idea|%>
-  <a href="/ideas/<%=idea.id%>"><%=idea.content%> - <%=idea.user.username%></a>
-  <br>
+
+
+<div class="card col-sm-8 bg-light ml-auto mr-auto">
+
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <div class="d-flex w-100 justify-content-between">
+        <p class="mb-1"><%=idea.content%></p>
+
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-outline-warning mr-1"href="/categories/<%=@category.id%>/edit">Edit Category</a>
+          <form action="/categories/<%=@category.id%>/delete" method="post">
+            <input type="hidden" id="hidden" name="_method" value="delete">
+
+            <input type="submit" class="btn btn-outline-danger" value="Remove Category">
+          </form>
+        </div>
+
+      </div>
+      <div class="row">
+        <a href="/users/<%=idea.user.slug%>" class="list-group-item-action bg-light col-sm-4">
+          <footer class="blockquote-footer mr-4">Owner: <%=idea.user.username%></footer>
+        </a>
+        <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-4">
+          <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
+        </a>
+      </div>
+    </blockquote>
+  </div>
+</div>
+
 <% end %>
 <br>
-
-<a href="/categories/<%=@category.id%>/edit">Edit Category</a>
-
-<form class="" action="/categories/<%=@category.id%>/delete" method="post">
-  <input type="hidden" id="hidden" name="_method" value="delete">
-
-  <input type="submit" value="Remove Category">
-</form>

@@ -4,48 +4,45 @@
   }
 </style>
 
-
-
-
-<h4><%=@idea.content%> - <a href="/users/<%=@idea.user.slug%>"><%=@idea.user.username%></a></h4>
-
-
+<h3 class="card-header text-center bg-light">Viewing Idea</h3>
 <br><br>
 
-<h5>Category</h5>
-
-<a href="/categories/<%=@idea.category.id%>"><%=@idea.category.name%></a>
-<br>
-
-
-<a href="/ideas/<%=@idea.id%>/edit">Edit Idea</a>
-
-<br>
-<div class="flash">
 <%if flash[:notice]%>
-  <%=flash[:notice]%>
-  <% end %>
+  <div class="alert alert-danger mb-0" role="alert">
+    <strong><%=flash[:notice]%></strong>
+  </div>
+<% end %>
+
+
+
+
+
+<div class="card col-sm-8 bg-light ml-auto mr-auto">
+
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <div class="d-flex w-100 justify-content-between">
+        <p class="mb-1"><%=@idea.content%></p>
+
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-outline-warning mr-1"href="/ideas/<%=@idea.id%>/edit">Edit Idea</a>
+          <form action="/ideas/<%=@idea.id%>/delete" method="post">
+            <input type="hidden" id="hidden" name="_method" value="delete">
+
+            <input type="submit" class="btn btn-outline-danger" value="Delete Idea">
+          </form>
+        </div>
+
+      </div>
+      <div class="row">
+        <a href="/users/<%=@idea.user.slug%>" class="list-group-item-action bg-light col-sm-4">
+          <footer class="blockquote-footer mr-4">Owner: <%=@idea.user.username%></footer>
+        </a>
+        <a href="/categories/<%=@idea.category.id%>" class="list-group-item-action bg-light col-sm-4">
+          <footer class="blockquote-footer">Category: <%=@idea.category.name%></footer>
+        </a>
+      </div>
+    </blockquote>
+  </div>
 </div>
-<br>
-<form action="/ideas/<%=@idea.id%>/delete" method="post">
-  <input type="hidden" id="hidden" name="_method" value="delete">
-
-  <input type="submit" value="Delete Idea">
-</form>
-
-
-
-<ul class=" col-sm-8 list-group-item flex-column align-items-start active bg-light text-primary">
-
-<div class="d-flex w-100 justify-content-between">
-  <!-- <li class="list-group-item">Dapibus ac facilisis in</li> -->
-  <p class="mb-1"><%=@idea.content%></p>
-
-  <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-secondary">Middle</button>
-  <button type="button" href="/ideas/<%=@idea.id%>/edit" class="btn btn-secondary">Right</button>
-  <a class="page-link"href="/ideas/<%=@idea.id%>/edit">edit</a>
-</div>
-
-</div>
-</ul>

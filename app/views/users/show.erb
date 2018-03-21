@@ -1,17 +1,24 @@
-<h4><%=@user.username%>'s Ideas</h4>
+<h3 class="card-header text-center bg-light"><%=@user.username%>'s Ideas</h3>
+<br><br>
 
 
 <%@user.ideas.reverse.each do |idea|%>
 
-<div class="card col-sm-8 bg-light mb-2">
-  <div class="card-body bg-light">
+<div class="card col-sm-8 bg-light ml-auto mr-auto mb-3">
 
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+        <a href="/ideas/<%=idea.id%>" class="card-link"><%=idea.content%></a>
 
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="card-text"><a href="/ideas/<%=idea.id%>" class="card-link"><%=idea.content%></a></h5>
-      <h6 class="card-text">Category: <a href="#" class="card-link"><%=idea.category.name%></a></h6>
-
-    </div>
+      <div class="row mt-1">
+        <a href="/users/<%=idea.user.slug%>" class="list-group-item-action bg-light col-sm-3">
+          <footer class="blockquote-footer mr-4">Owner: <%=@user.username%></footer>
+        </a>
+        <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-3">
+          <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
+        </a>
+      </div>
+    </blockquote>
   </div>
 </div>
 <% end %>

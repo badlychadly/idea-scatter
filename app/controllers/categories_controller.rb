@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class CategoriesController < ApplicationController
+  use Rack::Flash
 
 
   get '/categories' do
@@ -30,6 +33,7 @@ class CategoriesController < ApplicationController
     if logged_in? && current_user.categories.include?(@category)
       erb :'categories/edit'
     else
+      flash[:notice] = "Must add this Category to An Idea in order to edit"
       redirect "/categories/#{@category.id}"
     end
   end
@@ -49,7 +53,7 @@ class CategoriesController < ApplicationController
     if logged_in? && @category.users.include?(current_user)
       current_user.categories.delete(@category)
     else
-      # flash[:notice]
+      flash[:notice] = "Must add this Category to An Idea in order to delete"
     end
     redirect "/categories/#{@category.id}"
   end
