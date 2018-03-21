@@ -33,14 +33,19 @@
   <input type="submit" value="Delete Idea">
 </form>
 
-<a href="/ideas/<%=idea.id%>"><%=idea.content%></a>
+
 
 <ul class=" col-sm-8 list-group-item flex-column align-items-start active bg-light text-primary">
 
 <div class="d-flex w-100 justify-content-between">
   <!-- <li class="list-group-item">Dapibus ac facilisis in</li> -->
-  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+  <p class="mb-1"><%=@idea.content%></p>
 
-  <small><a href="/ideas/<%=idea.id%>/edit">edit</a></small>
+  <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary">Middle</button>
+  <button type="button" href="/ideas/<%=@idea.id%>/edit" class="btn btn-secondary">Right</button>
+  <a class="page-link"href="/ideas/<%=@idea.id%>/edit">edit</a>
+</div>
+
 </div>
 </ul>

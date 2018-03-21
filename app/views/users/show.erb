@@ -1,38 +1,17 @@
-<h4><%=@user.username%>'s Info</h4>
+<h4><%=@user.username%>'s Ideas</h4>
 
 
-<%@user.ideas.each do |idea|%>
+<%@user.ideas.reverse.each do |idea|%>
 
 <div class="card col-sm-8 bg-light mb-2">
   <div class="card-body bg-light">
 
 
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="card-text"><a href="#" class="card-link"><%=idea.content%></a></h5>
-      <small>3 days ago</small>
-    </div>
-    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-    <small><a href="#" class="card-link">Card link</a></small>
+      <h5 class="card-text"><a href="/ideas/<%=idea.id%>" class="card-link"><%=idea.content%></a></h5>
+      <h6 class="card-text">Category: <a href="#" class="card-link"><%=idea.category.name%></a></h6>
 
-    <a href="#" class="card-link">Another link</a>
+    </div>
   </div>
-</div>
-<% end %>
-<br>
-
-<%@user.categories.each do |category|%>
-  <a href="/categories/<%=category.id%>"><%=category.name%></a>
-  <br>
-
-  <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active bg-light text-primary">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small>Donec id elit non mi porta.</small>
-  </a>
 </div>
 <% end %>

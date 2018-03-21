@@ -3,7 +3,7 @@
 
 <%Idea.all.each do |idea|%>
 
-<div class="card col-sm-6 mb-2">
+<div class="card col-sm-6 mb-2 ml-2">
   <div class="card-body">
     <h5 class="card-title"><a href="/users/<%=idea.user.username%>" class="card-link"><%=idea.user.username%></a></h5>
     <h6 class="card-subtitle mb-2 text-muted">Idea:</h6>
@@ -13,4 +13,7 @@
 </div>
 
 <% end %>
+
+
+
 <br><br>
