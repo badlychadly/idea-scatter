@@ -1,12 +1,17 @@
 
-<h3>Edit Category</h3>
+<h3 class="card-header text-center bg-light">Edit Category</h3>
+<br><br>
 
 
+<div class="container col-sm-4">
 
-<form class="" action="/categories/<%=@category.id%>" method="post">
-  <input type="hidden" id="hidden" name="_method" value="patch">
-
-  <input type="text" name="name" id="name" value="<%=@category.name%>">
-  <br>
-  <input type="submit" value="Add Change">
-</form>
+  <form action="/categories/<%=@category.id%>" method="post">
+    <input type="hidden" id="hidden" name="_method" value="patch">
+    <div class="form-row">
+      <div class="col">
+        <input type="text" name="name" class="form-control" value="<%=@category.name%>" required>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Add Change">
+    </div>
+  </form>
+</div>

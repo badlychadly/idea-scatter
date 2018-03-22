@@ -21,7 +21,7 @@ use Rack::Flash
     if params[:idea].empty? || params[:category].all? do |k, v|
         v.empty?
       end
-      # flash[:message] = "Must fill out all fields"
+      flash[:notice] = "Need One Idea and One Category"
       redirect '/ideas/new'
     else
       category = Category.create(name: params[:category][:new]) unless params[:category][:new].empty?

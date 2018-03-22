@@ -1,19 +1,76 @@
 
-<h3>New Idea</h3>
+<h3 class="card-header text-center bg-light">New Idea</h3>
+<br><br>
+
+<%if flash[:notice]%>
+  <div class="alert alert-danger mb-0 text-center" role="alert">
+    <strong><%=flash[:notice]%></strong>
+  </div>
+<% end %>
+
+<div class="container form-group col-sm-6">
+  <form class="" action="/ideas" method="post">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Idea</span>
+      </div>
+      <input type="text" name="idea" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <br><br>
 
 
 
-<form class="" action="/ideas" method="post">
-  <input type="text" name="idea" id="idea" placeholder="Idea">
-  <br><br>
-  <h4>Choose 1 Category for your Idea</h4>
-  <%Category.all.each do |category|%>
-    <input type="checkbox" name="category[name]" value="<%=category.name%>" id="<%=category.name%>"><%=category.name%></input>
-    <br>
-  <% end %>
-  <label for="">Or create a new one</label>
-  <br>
-  <input type="text" name="category[new]" id="category" placeholder="New Category">
-  <br><br>
-  <input type="submit" value="submit">
-</form>
+      <legend>Choose 1 Category for your Idea</legend>
+
+      <%Category.all.each do |category|%>
+
+      <div class="custom-control custom-radio">
+        <input type="radio" id="<%=category.name%>" name="category[name]" value="<%=category.name%>" class="custom-control-input">
+        <label class="custom-control-label" for="<%=category.name%>"><%=category.name%></label>
+      </div>
+
+      <% end %>
+
+      <br>
+
+
+    <label for="exampleFormControlInput1">Or Create a new one</label>
+    <input type="text" name="category[new]" id="category" class="form-control" id="exampleFormControlInput1" placeholder="New Category">
+
+    <br><br>
+    <input type="submit" value="submit">
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <fieldset>
+  <legend>Custom forms</legend>
+  <div class="form-group">
+    <%Category.all.each do |category|%>
+    <div class="custom-control custom-radio">
+        <input type="radio" name="category[name]" value="<%=category.name%>" id="<%=category.name%>"><%=category.name%></input>
+
+        <input type="radio" id="<%=category.name%>" value="<%=category.name%>" name="category[name]" class="custom-control-input" checked="">
+        <label class="custom-control-label" for="customRadio1"><%=category.name%></label>
+      </div>
+
+      <% end %>
+
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+      <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" disabled="">
+      <label class="custom-control-label" for="customRadio3">Disabled custom radio</label>
+    </div>
+  </div>
+</fieldset> -->
