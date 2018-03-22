@@ -2,15 +2,34 @@
 <br><br>
 
 
+<%if flash[:notice]%>
+  <div class="alert alert-danger mb-0 text-center" role="alert">
+    <strong><%=flash[:notice]%></strong>
+  </div>
+<% end %>
 
-<div class="container col-sm-4">
+
+<div class="container card-columns col-sm-8">
+
+  <div class="card mb-3" style="width: 10rem;">
+  <div class="card-header text-center">
+    Existing Categories
+  </div>
+  <%Category.all.each do |category|%>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-light text-primary"><%=category.name%></li>
+  </ul>
+  <% end %>
+</div>
+
+
   <form action="/categories" method="post">
     <div class="form-row">
       <div class="col">
-        <input type="text" name="name" class="form-control" placeholder="New Category">
+        <input type="text" name="name" class="form-control" placeholder="New Category" required>
       </div>
       <input type="submit" class="btn btn-primary" value="Add Category">
     </div>
   </form>
-  
+
 </div>

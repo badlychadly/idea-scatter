@@ -1,18 +1,27 @@
-<h2>Ideas</h2>
-<br>
+<h3 class="card-header text-center bg-light">Ideas</h3>
+<br><br>
 
+<div class="container col-sm-8">
 <%Idea.all.each do |idea|%>
 
-<div class="card col-sm-6 bg-light mb-2 ml-2">
+<div class="card bg-light mb-2">
   <div class="card-body">
     <h5 class="card-title"><a href="/users/<%=idea.user.username%>" class="card-link"><%=idea.user.username%></a></h5>
     <h6 class="card-subtitle mb-2 text-muted">Idea:</h6>
     <a href="/ideas/<%=idea.id%>" class="list-group-item list-group-item-action bg-light border text-primary"><%=idea.content%></a>
-    <p class="card-link">Category: <a href="/categories/<%=idea.category.id%>" class="card-link"><%=idea.category.name%></a></p>
+    <p class="card-link">Category:
+      <%if !!idea.category%>
+      <a href="/categories/<%=idea.category.id%>" class="card-link"><%=idea.category.name%></a>
+      <% else %>
+        NONE
+      <% end %>
+      </p>
   </div>
 </div>
 
 <% end %>
+
+</div>
 
 
 

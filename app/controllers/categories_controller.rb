@@ -17,13 +17,13 @@ class CategoriesController < ApplicationController
   end
 
   post '/categories' do
-    if !Category.find_by(params)
+    if !Category.exists?(params)
       category = Category.create(params)
       if category.save
         redirect '/categories'
       end
     else
-      # flash[:notice] = ""
+      flash[:notice] = "Category already exists"
       redirect '/categories/new'
     end
   end
@@ -58,11 +58,16 @@ class CategoriesController < ApplicationController
   delete '/categories/:id/delete' do
     @category = Category.find_by(id: params[:id])
     if logged_in? && @category.users.include?(current_user)
-      current_user.categories.delete(@category)
+      ideas = Idea.where(user: current_user, category: @category)
+
+      ideas.each do |idea|
+        idea.category_id = nil
+      end
+      current_user.save
     else
       flash[:notice] = "Must add this Category to An Idea in order to delete"
     end
-    redirect "/categories/#{@category.id}"
+    redirect "/categories"
   end
 
 
