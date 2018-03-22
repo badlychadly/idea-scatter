@@ -14,8 +14,13 @@
         <a href="/users/<%=idea.user.slug%>" class="list-group-item-action bg-light col-sm-3">
           <footer class="blockquote-footer mr-4">Owner: <%=@user.username%></footer>
         </a>
+        <%if !!idea.category%>
         <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-3">
           <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
+        <% else %>
+        <footer class="blockquote-footer">Category: NONE</footer>
+
+        <% end %>
         </a>
       </div>
     </blockquote>
