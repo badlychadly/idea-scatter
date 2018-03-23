@@ -9,11 +9,11 @@ Specs:
 - [x helper methods defined in app controller prevent a user from alter other users content. actions definded with the helpers and conditionals allow users to make changes only when the conditions are met] Ensure that users can't modify content created by other users
 - [x Idea belongs to both other models and has routes for new, show, patch, and delete] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [x User model uses has_secure_password to ensure password criteria is met, and also validates the presence of email and username along with email uniqueness] Include user input validations
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x if a new category is requested to be made that is not valid post action will redirect and display a flash message hash with all of the errors from #errors.full_messages] Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [x] You have a large number of small Git commits
+- [x] Your commit messages are meaningful
+- [x] You made the changes in a commit that relate to the commit message
+- [x] You don't include changes in a commit that aren't related to the commit message
