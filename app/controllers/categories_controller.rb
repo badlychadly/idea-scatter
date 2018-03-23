@@ -62,10 +62,12 @@ class CategoriesController < ApplicationController
 
       ideas.each do |idea|
         idea.category_id = nil
+        idea.save
       end
-      current_user.save
+
     else
       flash[:notice] = "Must add this Category to An Idea in order to delete"
+      redirect "/categories/#{@category.id}"
     end
     redirect "/categories"
   end

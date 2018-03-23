@@ -7,38 +7,42 @@
   </div>
 <% end %>
   <div class="container  col-sm-8">
+  <% if @category.ideas.exists? %>
     <%@category.ideas.each do |idea|%>
-    
-    
-    <div class="card bg-light mb-3">
-      
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <div class="container  margin mb-2">
-            <a class="" href="/ideas/<%=idea.id%>"><%=idea.content%></a>
-          </div>
-            
-          <div class="row">
-            <a href="/users/<%=idea.user.slug%>" class="list-group-item-action bg-light col-sm-4">
-              <footer class="blockquote-footer">Owner: <%=idea.user.username%></footer>
-            </a>
-            <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-4">
-              <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
-            </a>
-          </div>
-        </blockquote>
+      <div class="card bg-light mb-3">
+
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <div class="container  margin mb-2">
+              <a class="" href="/ideas/<%=idea.id%>"><%=idea.content%></a>
+            </div>
+
+            <div class="row">
+              <a href="/users/<%=idea.user.slug%>" class="list-group-item-action bg-light col-sm-4">
+                <footer class="blockquote-footer">Owner: <%=idea.user.username%></footer>
+              </a>
+              <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-4">
+                <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
+              </a>
+            </div>
+          </blockquote>
+        </div>
       </div>
-    </div>
-    
     <% end %>
-    
+
     <br>
     <div class="btn-group" role="group" aria-label="Basic example">
       <a class="btn btn-outline-warning mr-1"href="/categories/<%=@category.id%>/edit">Edit Category</a>
       <form action="/categories/<%=@category.id%>/delete" method="post">
         <input type="hidden" id="hidden" name="_method" value="delete">
-        
+
         <input type="submit" class="btn btn-outline-danger" value="Remove Category">
       </form>
+      <% else %>
+      <div class="alert alert-primary text-center" role="alert">
+        <h4 class="alert-heading">No Ideas For <%=@category.name%> Yet!</h4>
+        <p class="mb-0">Edit or Create an Idea to add This Category</p>
+      </div>
+      <% end %>
     </div>
   </div>
