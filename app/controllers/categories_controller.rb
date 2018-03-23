@@ -17,15 +17,18 @@ class CategoriesController < ApplicationController
   end
 
   post '/categories' do
-    if !Category.exists?(params)
+    # if !Category.exists?(params)
       category = Category.create(params)
       if category.save
         redirect '/categories'
+      else
+        flash[:notice] = category.errors.full_messages
+        redirect '/categories/new'
       end
-    else
-      flash[:notice] = "Category already exists"
-      redirect '/categories/new'
-    end
+    # else
+    #   flash[:notice] = "Category already exists"
+    #   redirect '/categories/new'
+    # end
   end
 
 
