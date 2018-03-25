@@ -1,5 +1,7 @@
-class UsersController < ApplicationController
+require 'rack-flash'
 
+class UsersController < ApplicationController
+use Rack::Flash
 
   get '/signup' do
     erb :'users/signup'
@@ -22,11 +24,11 @@ class UsersController < ApplicationController
 
   post '/login' do
     @user = User.find_by(username: params[:username])
-    binding.pry
     if !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/ideas'
     else
+      flash[:notice] = "Check input fields"
       redirect '/login'
     end
   end

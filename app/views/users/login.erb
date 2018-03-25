@@ -1,6 +1,11 @@
 <h3 class="card-header text-center bg-light">Login</h3>
 <br><br>
 
+<%if flash[:notice]%>
+  <div class="alert alert-danger mb-0 text-center" role="alert">
+    <strong><%=flash[:notice]%></strong>
+  </div>
+<% end %>
 
 <form action="/login" method="post">
   <div class="form-group">
