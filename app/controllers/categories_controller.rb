@@ -67,7 +67,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "Must add this Category to An Idea in order to delete"
       redirect "/categories/#{@category.id}"
     end
-    redirect "/categories"
+    redirect "/ideas"
   end
 
 
