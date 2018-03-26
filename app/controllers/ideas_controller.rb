@@ -6,7 +6,11 @@ use Rack::Flash
 
 
   get '/ideas' do
-    erb :'ideas/index'
+    if logged_in?
+      erb :'ideas/index'
+    else
+      redirect '/'
+    end
   end
 
   get '/ideas/new' do
