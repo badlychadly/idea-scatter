@@ -13,6 +13,7 @@ gem 'pry'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'rack-flash3'
+gem 'sinatra-flash'
 
 
 group :test do

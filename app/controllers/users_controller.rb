@@ -1,7 +1,6 @@
-# require 'rack-flash'
 
 class UsersController < ApplicationController
-# use Rack::Flash
+
 
   get '/signup' do
     erb :'users/signup'
@@ -29,7 +28,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/ideas'
     else
-      # flash[:notice] = "Check input fields"
+      flash[:notice] = "Check input fields"
       # erb :'users/login'
       redirect '/login'
     end
@@ -42,7 +41,6 @@ class UsersController < ApplicationController
 
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
-    # binding.pry
     erb :'users/show'
   end
 
