@@ -1,13 +1,14 @@
-require 'rack-flash'
+# require 'rack-flash'
 
 class UsersController < ApplicationController
-use Rack::Flash
+# use Rack::Flash
 
   get '/signup' do
     erb :'users/signup'
   end
 
   post '/signup' do
+    params[:username].strip!
     @user = User.create(params)
     if @user.save
       session[:user_id] = @user.id
@@ -28,7 +29,8 @@ use Rack::Flash
       session[:user_id] = @user.id
       redirect '/ideas'
     else
-      flash[:notice] = "Check input fields"
+      # flash[:notice] = "Check input fields"
+      # erb :'users/login'
       redirect '/login'
     end
   end
