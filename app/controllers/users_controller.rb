@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
 
   get '/signup' do
-    erb :'users/signup'
+    if !logged_in?
+      erb :'users/signup'
+    else
+      redirect '/ideas'
+    end
   end
 
   post '/signup' do
@@ -13,13 +17,18 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/ideas'
     else
+      flash[:notice] = @user.errors.full_messages
       redirect '/signup'
     end
   end
 
 
   get '/login' do
-    erb :'users/login'
+    if !logged_in?
+      erb :'users/login'
+    else
+      redirect '/ideas'
+    end
   end
 
   post '/login' do

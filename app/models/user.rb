@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
   has_many :ideas
   has_many :categories, through: :ideas
   validates_presence_of :username, :email
-  validates :email, uniqueness: true
+  validates :email, length: { minimum: 8 }, uniqueness: { case_sensitive: false }
+  validates :username, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
+
+
 
 
 

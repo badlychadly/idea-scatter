@@ -1,6 +1,13 @@
 <h3 class="card-header text-center bg-light">Signup</h3>
 <br><br>
 
+<%if flash[:notice]%>
+  <%flash[:notice].each do |n|%>
+    <div class="alert alert-danger mb-0 text-center" role="alert">
+      <strong><%=n%></strong>
+    </div>
+  <% end %>
+<% end %>
 
 
 <form action="/signup" method="post">
