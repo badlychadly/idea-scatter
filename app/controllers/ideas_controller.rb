@@ -22,19 +22,23 @@ use Rack::Flash
   end
 
   post '/ideas' do
-    if params[:idea].empty? || params[:category].all? do |k, v|
-        v.empty?
-      end
-      flash[:notice] = "Need One Idea and One Category"
-      redirect '/ideas/new'
-    else
-      category = Category.create(name: params[:category][:new]) unless params[:category][:new].empty?
+    @idea = current_user.ideas.build(content: params[:idea].strip)
 
-      category = Category.find_or_create_by(name: params[:category][:name]) if params[:category][:new].empty?
-      if category.save
-        current_user.ideas.create(content: params[:idea], category: category)
-        redirect '/ideas'
+
+    params[:category].values.each do |v|
+      @category = Category.find_or_create_by(name: v.strip) unless v.empty?
+    end
+    @idea.category = @category
+    if @idea.valid? && @category.valid?
+      @idea.save
+      redirect '/ideas'
+    else
+      if @idea.errors.any?
+        flash[:notice] = @idea.errors.full_messages
+      else
+        flash[:notice] = @category.errors.full_messages.map{|c| "Category: " << c}
       end
+      redirect '/ideas/new'
     end
   end
 

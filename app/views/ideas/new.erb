@@ -3,9 +3,11 @@
 <br><br>
 
 <%if flash[:notice]%>
-  <div class="alert alert-danger mb-0 text-center" role="alert">
-    <strong><%=flash[:notice]%></strong>
-  </div>
+  <%flash[:notice].each do |n|%>
+    <div class="alert alert-danger mb-0 text-center" role="alert">
+      <strong><%=n%></strong>
+    </div>
+  <% end %>
 <% end %>
 
 <div class="container form-group col-sm-6">
