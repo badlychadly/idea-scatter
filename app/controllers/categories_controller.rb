@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   post '/categories' do
+    params[:name].strip!
     category = Category.create(params)
     if category.save
       redirect '/categories'
