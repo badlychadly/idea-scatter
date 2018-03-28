@@ -43,8 +43,12 @@ use Rack::Flash
   end
 
   get '/ideas/:id' do
-    @idea = Idea.find_by(id: params[:id])
-    erb :'ideas/show'
+    if logged_in?
+      @idea = Idea.find_by(id: params[:id])
+      erb :'ideas/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/ideas/:id/edit' do
