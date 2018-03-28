@@ -1,0 +1,34 @@
+<h3 class="card-header text-center bg-light"><%=@user.username%> Categories</h3>
+<br><br>
+
+
+
+
+
+  <div class="container col-sm-4">
+    <div class="list-group ">
+      <li class="list-group-item bg-light text-primary">
+
+        <div class="row align-items-center mb-2">
+          <div class="col">
+            Category
+          </div>
+          <div class="col">
+            Num of Ideas
+          </div>
+        </div>
+      </li>
+      <%@user.categories.reverse.each do |category|%>
+      <a href="/categories/<%=category.id%>" class="list-group-item list-group-item-action active bg-light text-primary border">
+        <div class="row align-items-center">
+          <div class="col">
+            <%=category.name%>
+          </div>
+          <div class="col">
+            <%=category.ideas.size%>
+          </div>
+        </div>
+      </a>
+      <% end %>
+    </div>
+  </div>
