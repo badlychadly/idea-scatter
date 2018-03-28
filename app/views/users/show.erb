@@ -1,14 +1,20 @@
-<h3 class="card-header text-center bg-light"><%=@user.username%>'s Ideas</h3>
+<div class="card-header text-center bg-light">
+  <h3><%=@user.username%>'s Ideas</h3>
+  <button type="button" class="btn btn-primary btn-sm">
+    Ideas <span class="badge badge-light"><%=@user.ideas.size%></span>
+  </button>
+
+</div>
 <br><br>
 
-
+<div class="container col-sm-8">
 <%@user.ideas.reverse.each do |idea|%>
 
-<div class="card col-sm-8 bg-light ml-auto mr-auto mb-3">
+<div class="card bg-light mb-3">
 
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-        <a href="/ideas/<%=idea.id%>" class="card-link"><%=idea.content%></a>
+      <a href="/ideas/<%=idea.id%>" class="card-link"><%=idea.content%></a>
 
       <div class="row mt-1">
         <a href="/users/<%=idea.user.slug%>" class="list-group-item-action bg-light col-sm-3">
@@ -17,13 +23,15 @@
         <%if !!idea.category%>
         <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-3">
           <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
-        <% else %>
-        <footer class="blockquote-footer">Category: NONE</footer>
+          <% else %>
+          <footer class="blockquote-footer">Category: NONE</footer>
 
-        <% end %>
+          <% end %>
         </a>
       </div>
     </blockquote>
   </div>
 </div>
 <% end %>
+
+</div>

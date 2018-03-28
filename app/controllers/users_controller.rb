@@ -38,7 +38,6 @@ class UsersController < ApplicationController
       redirect '/ideas'
     else
       flash[:notice] = "Check input fields"
-      # erb :'users/login'
       redirect '/login'
     end
   end
