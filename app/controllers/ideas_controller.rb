@@ -6,6 +6,7 @@ use Rack::Flash
 
 
   get '/ideas' do
+    @ideas = Idea.all.reverse
     if logged_in?
       erb :'ideas/index'
     else

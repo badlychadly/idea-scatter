@@ -5,14 +5,16 @@ class CategoriesController < ApplicationController
 
 
   get '/categories' do
+    @categories = Category.all.reverse
     erb :'categories/index'
   end
 
   get '/categories/new' do
     if logged_in?
+      @categories = Category.all
       erb :'categories/new'
     else
-      redirect '/loggin'
+      redirect '/login'
     end
   end
 

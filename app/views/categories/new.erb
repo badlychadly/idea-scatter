@@ -17,7 +17,7 @@
   <div class="card-header text-center">
     Existing Categories
   </div>
-  <%Category.all.each do |category|%>
+  <%@categories.each do |category|%>
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-light text-primary"><%=category.name%></li>
   </ul>

@@ -18,14 +18,14 @@
           </div>
         </div>
       </li>
-      <%Category.all.reverse.each do |category|%>
+      <%@categories.each do |category|%>
       <a href="/categories/<%=category.id%>" class="list-group-item list-group-item-action active bg-light text-primary border">
         <div class="row align-items-center">
           <div class="col">
             <%=category.name%>
           </div>
           <div class="col">
-            <%=category.ideas.size%>
+            <%=category.idea_count%>
           </div>
         </div>
       </a>

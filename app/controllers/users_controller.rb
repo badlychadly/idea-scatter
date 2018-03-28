@@ -58,6 +58,7 @@ class UsersController < ApplicationController
 
   get '/users/:slug/categories' do
     @user = User.find_by_slug(params[:slug])
+    @categories = @user.categories.reverse
     erb :'users/categories'
   end
 

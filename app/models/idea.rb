@@ -7,6 +7,8 @@ class Idea < ActiveRecord::Base
     unless: Proc.new { |idea| Idea.exists?(idea.id) }
 
 
-
+      def category_name
+        self.category.name
+      end
 
 end

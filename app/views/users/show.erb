@@ -1,7 +1,7 @@
 <div class="card-header text-center bg-light">
   <h3><%=@user.username%>'s Ideas</h3>
   <button type="button" class="btn btn-primary btn-sm">
-    Ideas <span class="badge badge-light"><%=@user.ideas.size%></span>
+    Ideas <span class="badge badge-light"><%=@user.ideas_size%></span>
   </button>
 
 </div>
@@ -22,7 +22,7 @@
         </a>
         <%if !!idea.category%>
         <a href="/categories/<%=idea.category.id%>" class="list-group-item-action bg-light col-sm-3">
-          <footer class="blockquote-footer">Category: <%=idea.category.name%></footer>
+          <footer class="blockquote-footer">Category: <%=idea.category_name%></footer>
           <% else %>
           <footer class="blockquote-footer">Category: NONE</footer>
 

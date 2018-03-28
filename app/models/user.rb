@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     self.username.downcase.gsub(" ", "-")
   end
 
+  def ideas_size
+    self.ideas.size
+  end
+
 end
